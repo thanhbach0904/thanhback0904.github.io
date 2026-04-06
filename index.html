@@ -80,13 +80,12 @@ title: Home
   </section>
 
   <!-- ===== CARDS ROW (posts 4-7) ===== -->
-  {% assign card_posts = all_posts | offset: 3 | limit: 4 %}
-  {% if card_posts.size > 0 %}
+  {% if all_posts.size > 3 %}
   <section class="cards-section">
     <div class="container">
       <p class="section-label">Also in this edition</p>
       <div class="cards-grid">
-        {% for p in card_posts %}
+        {% for p in all_posts limit:4 offset:3 %}
           {% include article-card.html post=p %}
         {% endfor %}
       </div>
@@ -94,16 +93,16 @@ title: Home
   </section>
   {% endif %}
 
-  <!-- ===== LATEST POSTS + TAGS ===== -->
+  <!-- ===== BROWSE BY TOPIC + LATEST POSTS ===== -->
   <section class="latest-section">
     <div class="container">
       <div class="latest-grid">
 
+        {% if all_posts.size > 7 %}
         <div>
           <p class="section-label">Latest</p>
           <div class="latest-list">
-            {% assign latest_posts = all_posts | offset: 7 | limit: 8 %}
-            {% for p in latest_posts %}
+            {% for p in all_posts limit:8 offset:7 %}
             <div class="article-card latest-item">
               {% if p.image %}
               <a href="{{ p.url | relative_url }}" class="card-image-link">
@@ -130,6 +129,7 @@ title: Home
             {% endfor %}
           </div>
         </div>
+        {% endif %}
 
         <aside class="latest-sidebar">
           <h3>Browse by Topic</h3>
