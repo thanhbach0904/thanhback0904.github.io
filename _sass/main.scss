@@ -432,6 +432,10 @@ ul { list-style: none; }
   }
 
   .post-date { }
+  .post-modified {
+    &::before { content: "·"; margin-right: 0; }
+    font-style: italic;
+  }
   .post-read-time { font-style: italic; }
 }
 
