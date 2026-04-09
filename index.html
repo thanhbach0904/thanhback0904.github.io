@@ -5,149 +5,41 @@ title: Home
 
 <div class="home-page">
 
-  <!-- ===== HERO SECTION ===== -->
-  {% assign featured_post = site.posts | where: "featured", true | first %}
-  {% assign all_posts = site.posts %}
-
-  <section class="hero-section">
+  <section class="posts-section">
     <div class="container">
-      <div class="hero-grid">
-
-        <!-- Large featured article -->
-        {% if featured_post %}
-        <div class="article-card hero-featured">
-          {% if featured_post.image %}
-          <a href="{{ featured_post.url | relative_url }}" class="card-image-link">
+      <div class="posts-grid">
+        {% for p in site.posts %}
+        <article class="article-card post-card">
+          {% if p.image %}
+          <a href="{{ p.url | relative_url }}" class="card-image-link">
             <div class="card-image">
-              <img src="{{ featured_post.image | relative_url }}" alt="{{ featured_post.title }}" />
+              <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy" />
             </div>
           </a>
           {% endif %}
           <div class="card-body">
-            {% if featured_post.tag %}
-            <a href="{{ '/tag/' | append: featured_post.tag | append: '/' | relative_url }}" class="card-tag">{{ featured_post.tag | capitalize }}</a>
+            {% if p.tag %}
+            <a href="{{ '/tag/' | append: p.tag | append: '/' | relative_url }}" class="card-tag">{{ p.tag | capitalize }}</a>
             {% endif %}
-            <h2 class="card-title" style="font-size:1.7rem;line-height:1.2;">
-              <a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a>
+            <h2 class="card-title">
+              <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
             </h2>
-            {% if featured_post.description %}
-            <p class="card-description">{{ featured_post.description }}</p>
+            {% if p.description %}
+            <p class="card-description">{{ p.description }}</p>
             {% endif %}
-            {% if featured_post.read_time %}
-            <span class="card-read-time">{{ featured_post.read_time }} min read</span>
-            {% endif %}
+            <div class="card-footer">
+              <span class="card-date">{{ p.date | date: "%B %-d, %Y" }}</span>
+              {% if p.read_time %}
+              <span class="card-read-time">{{ p.read_time }} min read</span>
+              {% endif %}
+            </div>
           </div>
-        </div>
-        {% endif %}
-
-        <!-- Stacked side articles (skip the featured post) -->
-        <div class="hero-stack">
-          {% assign stack_count = 0 %}
-          {% for p in all_posts %}
-            {% if stack_count < 2 %}
-              {% unless p.url == featured_post.url %}
-              <div class="article-card hero-stack-item">
-                {% if p.image %}
-                <a href="{{ p.url | relative_url }}" class="card-image-link">
-                  <div class="card-image">
-                    <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" />
-                  </div>
-                </a>
-                {% endif %}
-                <div class="card-body">
-                  {% if p.tag %}
-                  <a href="{{ '/tag/' | append: p.tag | append: '/' | relative_url }}" class="card-tag">{{ p.tag | capitalize }}</a>
-                  {% endif %}
-                  <h2 class="card-title">
-                    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-                  </h2>
-                  {% if p.description %}
-                  <p class="card-description">{{ p.description }}</p>
-                  {% endif %}
-                  {% if p.read_time %}
-                  <span class="card-read-time">{{ p.read_time }} min read</span>
-                  {% endif %}
-                </div>
-              </div>
-              {% assign stack_count = stack_count | plus: 1 %}
-              {% endunless %}
-            {% endif %}
-          {% endfor %}
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CARDS ROW (posts 4-7) ===== -->
-  {% if all_posts.size > 3 %}
-  <section class="cards-section">
-    <div class="container">
-      <p class="section-label">Also in this edition</p>
-      <div class="cards-grid">
-        {% for p in all_posts limit:4 offset:3 %}
-          {% include article-card.html post=p %}
+        </article>
         {% endfor %}
       </div>
     </div>
   </section>
-  {% endif %}
 
-  <!-- ===== LATEST POSTS ===== -->
-  {% if all_posts.size > 3 %}
-  <section class="latest-section">
-    <div class="container">
-      <div class="latest-grid">
-        <div>
-          <p class="section-label">Latest</p>
-          <div class="latest-list">
-            {% for p in all_posts limit:8 offset:3 %}
-              {% unless p.url == featured_post.url %}
-              <div class="article-card latest-item">
-                {% if p.image %}
-                <a href="{{ p.url | relative_url }}" class="card-image-link">
-                  <div class="card-image">
-                    <img src="{{ p.image | relative_url }}" alt="{{ p.title }}" />
-                  </div>
-                </a>
-                {% endif %}
-                <div class="card-body">
-                  {% if p.tag %}
-                  <a href="{{ '/tag/' | append: p.tag | append: '/' | relative_url }}" class="card-tag">{{ p.tag | capitalize }}</a>
-                  {% endif %}
-                  <h2 class="card-title">
-                    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-                  </h2>
-                  {% if p.description %}
-                  <p class="card-description">{{ p.description }}</p>
-                  {% endif %}
-                  {% if p.read_time %}
-                  <span class="card-read-time">{{ p.read_time }} min read</span>
-                  {% endif %}
-                </div>
-              </div>
-              {% endunless %}
-            {% endfor %}
-          </div>
-        </div>
-
-        <aside class="latest-sidebar">
-          <h3>Browse by Topic</h3>
-          <div class="sidebar-tag-list">
-            <a href="{{ '/tag/politics/' | relative_url }}">Politics</a>
-            <a href="{{ '/tag/analysis/' | relative_url }}">Analysis</a>
-            <a href="{{ '/tag/technical/' | relative_url }}">Technical</a>
-            <a href="{{ '/tag/books/' | relative_url }}">Books</a>
-            <a href="{{ '/tag/life/' | relative_url }}">Life's Perspectives</a>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-  <!-- ===== BROWSE BY TOPIC (standalone when few posts) ===== -->
-  {% if all_posts.size <= 3 %}
   <section class="browse-section">
     <div class="container">
       <aside class="latest-sidebar">
@@ -162,6 +54,5 @@ title: Home
       </aside>
     </div>
   </section>
-  {% endif %}
 
 </div>
