@@ -48,4 +48,4 @@ Your article content here in **Markdown**.
 
 Push to the `main` branch. GitHub Pages builds the site automatically within ~60 seconds.
 
-Site will be live at: **https://thanhback0904.github.io**
+Site will be live at: **https://thanhbach0904.github.io**
