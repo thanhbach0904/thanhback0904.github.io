@@ -4,6 +4,7 @@ baseurl: ""
 url: "https://thanhbach0904.github.io"
 author: Thanh
 
+timezone: Asia/Ho_Chi_Minh
 permalink: /:year/:month/:day/:title/
 
 markdown: kramdown
