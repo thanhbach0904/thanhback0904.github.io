@@ -2,6 +2,7 @@
 layout: post
 title: "Yêu những điều không hoàn hảo - Haemin"
 date: 2026-04-12
+last_modified: 2026-04-13
 tag: books         
 description: "Phần 1: Tự chăm lo bản thân"
 read_time: 13
@@ -41,7 +42,7 @@ Với mình đây là một câu hỏi khó, vì dù sao mình cũng chỉ mới
 
 Lúc ban đầu thì thứ gì cũng sẽ khó, nhưng mình nghĩ rằng tập luyện qua thời gian sẽ khiến chúng ta hiểu được về cách diễn đạt cảm xúc của mình. Trong lúc đi học, chúng ta dành phần lớn thời gian để đi phân tích tác phẩm văn học của người khác, cố đi hiểu tâm trạng, ý đồ của người khác trong khi không hiểu được mình. Vì thế nên mình có phần nào thích nghị luận xã hội hơn, vì nó mang tính thời sự, đồng thời nó cũng là phần thể hiện tính độc bản cao nhất, bày rõ cá tính của mỗi con người, cũng như cảm xúc của họ. 
 
-> *Làm thế nào để tôi nói với người khác về cảm xúc mà mình đnag trải qua ?* 
+> *Làm thế nào để tôi nói với người khác về cảm xúc mà mình đang trải qua ?* 
 
 Giống với câu bên trên, mình cũng không biết. Mình cũng gặp khó khăn trong việc nói với người khác mình cảm nhận như nào. Mình luôn đẩy mọi người ra xa khỏi mình, kể cả những người thân, những người mình yêu quý. Điều này không dễ dàng, nhưng mình cũng đang tập luyện dần. 
 
